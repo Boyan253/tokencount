@@ -23,3 +23,13 @@ def test_estimate_is_roughly_chars_over_four():
     text = "The quick brown fox jumps over the lazy dog. " * 20
     ratio = len(text) / tokencount.estimate(text)
     assert 3.0 < ratio < 6.0
+
+
+def test_cost_maths():
+    assert round(tokencount.cost(1_000_000, 3.0), 4) == 3.0
+    assert round(tokencount.cost(500_000, 3.0), 4) == 1.5
+
+def test_human_abbreviates():
+    assert tokencount.human(1500) == "1.5k"
+    assert tokencount.human(2_000_000) == "2.0M"
+    assert tokencount.human(42) == "42"
