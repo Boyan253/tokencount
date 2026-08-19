@@ -27,3 +27,14 @@ python tokencount.py docs/*.md --limit 100000     # exit 1 if over budget
     6.4k tokens total
    0.0192 USD at $3.00 per million
 ```
+
+## How the estimate works
+
+Text is split into word, punctuation and whitespace pieces. Each punctuation
+mark is one token, each newline is one, and a word costs roughly one token per
+four characters — which is how byte-pair encoding behaves on ordinary prose and
+code.
+
+It is an **estimate**. Expect a few percent of error on English and code, more
+on dense JSON, base64, or non-Latin scripts. Use it for budgeting and limits,
+not billing reconciliation.
