@@ -44,3 +44,10 @@ not billing reconciliation.
 `--price` is dollars per million input tokens; put your provider's number in.
 `--limit` makes the tool exit 1 when a directory is bigger than the context you
 were planning to use, which is handy in a script that assembles prompts.
+
+## Tests
+
+```
+pip install pytest
+pytest
+```
