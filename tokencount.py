@@ -6,6 +6,8 @@ import os
 import re
 import sys
 
+__version__ = "0.1.0"
+
 # A BPE tokenizer splits on word boundaries, punctuation and whitespace runs.
 # Counting those pieces lands within a few percent of real tokenizers on
 # ordinary prose and code, with no model files to download.
@@ -47,6 +49,8 @@ def read(path):
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--version", action="version",
+                    version="%(prog)s " + __version__)
     ap.add_argument("files", nargs="*", default=["-"],
                     help="files to measure, or nothing for stdin")
     ap.add_argument("--price", type=float, default=0.0,
